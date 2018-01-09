@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`babel-plugin-react-native-classname-to-style Should not touch empty style definition: Should not touch empty style definition 1`] = `
+"
+const Foo = () => <div style={{}}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: {} },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should not touch multiple style objects: Should not touch multiple style objects 1`] = `
+"
+const Foo = () => <div style={[styles.shouldNotBeTransformed, { color: \\"#f00\\" }]}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: [styles.shouldNotBeTransformed, { color: \\"#f00\\" }] },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should not touch multiple style objects: Should not touch multiple style objects 2`] = `
+"
+const Foo = () => <div style={[{ backgroundColor: \\"#000\\" }, { color: \\"#f00\\" }]}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: [{ backgroundColor: \\"#000\\" }, { color: \\"#f00\\" }] },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should preserve className string and style object: Should preserve className string and style object 1`] = `
+"
+const Foo = () => <div className=\\"should-not-change\\" style={{ color: \\"#f00\\" }}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { className: \\"should-not-change\\", style: { color: \\"#f00\\" } },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should preserve className string: Should preserve className string 1`] = `
+"
+const Foo = () => <div className=\\"should-not-change\\">Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { className: \\"should-not-change\\" },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should support merging className with style: Should support merging className with style 1`] = `
+"
+const Foo = () => <div className={styles.shouldMergeWithStyles} style={{ color: \\"#f00\\" }}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: [styles.shouldMergeWithStyles, { color: \\"#f00\\" }] },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should transform single classname to styles object: Should transform single classname to styles object 1`] = `
+"
+const Foo = () => <div className={styles.foo}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: styles.foo },
+    \\"Foo\\"
+  );
+};
+"
+`;
