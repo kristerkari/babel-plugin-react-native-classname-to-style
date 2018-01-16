@@ -57,6 +57,10 @@ pluginTester({
     }
     /*
     {
+      title: "Should support multiple classnames by joining an array",
+      code: `const Foo = () => <div className={[styles.style1, styles.style2, styles.style3].join(' ')}>Foo</div>`
+    },
+    {
       title: "Should support destructuring multiple styles",
       code: `const Foo = () => <div className={{...style1, ...style2}}>Foo</div>`,
     },
