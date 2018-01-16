@@ -1,5 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`babel-plugin-react-native-classname-to-style Should not touch className string and empty style definition: Should not touch className string and empty style definition 1`] = `
+"
+const Foo = () => <div className=\\"should-not-change\\" style={{}}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { className: \\"should-not-change\\", style: {} },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
 exports[`babel-plugin-react-native-classname-to-style Should not touch empty style definition: Should not touch empty style definition 1`] = `
 "
 const Foo = () => <div style={{}}>Foo</div>
@@ -54,6 +72,24 @@ var Foo = function Foo() {
 "
 `;
 
+exports[`babel-plugin-react-native-classname-to-style Should not touch style object: Should not touch style object 1`] = `
+"
+const Foo = () => <div style={{ color: \\"#f00\\" }}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: { color: \\"#f00\\" } },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
 exports[`babel-plugin-react-native-classname-to-style Should preserve className string and style object: Should preserve className string and style object 1`] = `
 "
 const Foo = () => <div className=\\"should-not-change\\" style={{ color: \\"#f00\\" }}>Foo</div>
@@ -84,6 +120,42 @@ var Foo = function Foo() {
   return React.createElement(
     \\"div\\",
     { className: \\"should-not-change\\" },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should support merging className with empty style object and keep other props: Should support merging className with empty style object and keep other props 1`] = `
+"
+const Foo = () => <div className={styles.shouldMergeWithStyles} style={{}} key={1}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: [styles.shouldMergeWithStyles, {}], key: 1 },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should support merging className with empty style object: Should support merging className with empty style object 1`] = `
+"
+const Foo = () => <div className={styles.shouldMergeWithStyles} style={{}}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: [styles.shouldMergeWithStyles, {}] },
     \\"Foo\\"
   );
 };

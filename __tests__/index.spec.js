@@ -19,12 +19,25 @@ pluginTester({
       code: `const Foo = () => <div className={styles.shouldMergeWithStyles} style={{ color: "#f00" }}>Foo</div>`
     },
     {
+      title: "Should support merging className with empty style object",
+      code: `const Foo = () => <div className={styles.shouldMergeWithStyles} style={{}}>Foo</div>`
+    },
+    {
+      title:
+        "Should support merging className with empty style object and keep other props",
+      code: `const Foo = () => <div className={styles.shouldMergeWithStyles} style={{}} key={1}>Foo</div>`
+    },
+    {
       title: "Should preserve className string",
       code: `const Foo = () => <div className="should-not-change">Foo</div>`
     },
     {
       title: "Should preserve className string and style object",
       code: `const Foo = () => <div className="should-not-change" style={{ color: "#f00" }}>Foo</div>`
+    },
+    {
+      title: "Should not touch style object",
+      code: `const Foo = () => <div style={{ color: "#f00" }}>Foo</div>`
     },
     {
       title: "Should not touch multiple style objects",
@@ -37,6 +50,10 @@ pluginTester({
     {
       title: "Should not touch empty style definition",
       code: `const Foo = () => <div style={{}}>Foo</div>`
+    },
+    {
+      title: "Should not touch className string and empty style definition",
+      code: `const Foo = () => <div className="should-not-change" style={{}}>Foo</div>`
     }
     /*
     {
