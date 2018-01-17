@@ -66,6 +66,16 @@ pluginTester({
       code: `const Foo = () => <div className="should-not-change" style={{}}>Foo</div>`
     },
     {
+      title: "Should not touch className template string",
+      code: "const Foo = () => <div className={`should-not-change`}>Foo</div>"
+    },
+    {
+      title:
+        "Should not touch className template string and empty style definition",
+      code:
+        "const Foo = () => <div className={`should-not-change`} style={{}}>Foo</div>"
+    },
+    {
       title: "Should support single classname by joining an array",
       code: `const Foo = () => <div className={[styles.style1].join(' ')}>Foo</div>`
     },
@@ -101,16 +111,61 @@ pluginTester({
       title:
         "Should support multiple classnames by joining an array and merge empty styles object",
       code: `const Foo = () => <div className={[styles.style1, styles.style2, styles.style3].join(' ')} style={{}}>Foo</div>`
+    },
+    {
+      title: "Should support single classname with template literals",
+      code: "const Foo = () => <div className={`${styles.foo}`}>Foo</div>" // eslint-disable-line no-template-curly-in-string
+    },
+    {
+      title: "Should support multiple classnames with template literals",
+      code:
+        "const Foo = () => <div className={`${styles.foo} ${styles.bar}`}>Foo</div>" // eslint-disable-line no-template-curly-in-string
+    },
+    {
+      title: "Should support multiple classnames with template literals",
+      code:
+        "const Foo = () => <div className={`${styles.foo} ${styles.bar} ${styles.baz}`}>Foo</div>" // eslint-disable-line no-template-curly-in-string
+    },
+    {
+      title:
+        "Should support single classname with template literals and merge styles object",
+      code:
+        "const Foo = () => <div className={`${styles.foo}`} style={{ color: 'black' }}>Foo</div>" // eslint-disable-line no-template-curly-in-string
+    },
+    {
+      title:
+        "Should support multiple classnames with template literals and merge styles object",
+      code:
+        "const Foo = () => <div className={`${styles.foo} ${styles.bar} ${styles.baz}`} style={{ color: 'black' }}>Foo</div>" // eslint-disable-line no-template-curly-in-string
+    },
+    {
+      title:
+        "Should support single classname with template literals and merge empty styles object",
+      code:
+        "const Foo = () => <div className={`${styles.foo}`} style={{}}>Foo</div>" // eslint-disable-line no-template-curly-in-string
+    },
+    {
+      title:
+        "Should support multiple classnames with template literals and merge empty styles object",
+      code:
+        "const Foo = () => <div className={`${styles.foo} ${styles.bar} ${styles.baz}`} style={{}}>Foo</div>" // eslint-disable-line no-template-curly-in-string
+    },
+    {
+      title:
+        "Should support multiple classnames with template literals and another element with multiple classnames by joining an array",
+      code:
+        "const Foo = () => <div><div className={`${styles.foo} ${styles.bar} ${styles.baz}`}>Foo</div><div className={[styles.style1, styles.style2].join(' ')}>Bar</div></div>" // eslint-disable-line no-template-curly-in-string
+    },
+    {
+      title:
+        "Should support multiple classnames with template literals and another element with multiple classnames by joining an array and merge styles objects",
+      code:
+        "const Foo = () => <div><div className={`${styles.foo} ${styles.bar} ${styles.baz}`} style={{ color: 'blue' }}>Foo</div><div className={[styles.style1, styles.style2, styles.style3].join(' ')} style={{ color: 'red' }}>Bar</div></div>" // eslint-disable-line no-template-curly-in-string
     }
     /*
     {
       title: "Should support destructuring multiple styles",
       code: `const Foo = () => <div className={{...style1, ...style2}}>Foo</div>`,
-    },
-    {
-      title: "Should support template literals",
-      code:
-        "const Foo = () => <div className={`${styles.foo} ${styles.bar} ${styles.baz}`}>Foo</div>",
     },
     */
   ]

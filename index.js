@@ -2,6 +2,7 @@ module.exports = function(babel) {
   var css = null;
   var style = null;
   var t = babel.types;
+  var templateLiteral = null;
 
   function isJoinExpression(value) {
     return (
@@ -10,6 +11,15 @@ module.exports = function(babel) {
       value.expression.callee.property.name &&
       value.expression.callee.property.name.toLowerCase() === "join" &&
       t.isArrayExpression(value.expression.callee.object)
+    );
+  }
+
+  function isTemplateLiteralWithExpressions(value) {
+    return (
+      value &&
+      value.expression &&
+      value.expression.type === "TemplateLiteral" &&
+      value.expression.expressions.length > 0
     );
   }
 
@@ -49,13 +59,16 @@ module.exports = function(babel) {
           } else if (style === null) {
             style = css;
             style.node.name.name = "style";
-          } else {
-            if (style && css) {
-              style.node.value = t.arrayExpression([
-                css.node.value.expression,
-                style.node.value.expression
-              ]);
-            }
+          } else if (
+            style &&
+            css &&
+            templateLiteral === null &&
+            css.node.value.expression.type !== "StringLiteral"
+          ) {
+            style.node.value = t.arrayExpression([
+              css.node.value.expression,
+              style.node.value.expression
+            ]);
             css.remove();
           }
           css = null;
@@ -68,6 +81,28 @@ module.exports = function(babel) {
           css = path;
         } else if (name === "style") {
           style = path;
+        }
+
+        if (css === null) {
+          return;
+        }
+
+        if (style && style.node.value.expression && templateLiteral) {
+          var classes = [];
+          classes = classes.concat(templateLiteral.expression.expressions);
+          classes.push(style.node.value.expression);
+          style.node.value = t.arrayExpression(classes);
+          css.replaceWith(style);
+          style.remove();
+          templateLiteral = null;
+          css = null;
+          style = null;
+        } else if (isTemplateLiteralWithExpressions(css.node.value)) {
+          templateLiteral = css.node.value;
+          css.node.value = t.arrayExpression(
+            css.node.value.expression.expressions
+          );
+          css.node.name.name = "style";
         }
       }
     }
