@@ -63,6 +63,37 @@ Example:
 <Text style={[styles.class1, styles.class2, { color: "blue" }]} />
 ```
 
+#### Using template literal syntax
+
+Example:
+
+```jsx
+<Text className={`${styles.class1} ${styles.class2}`} />
+```
+
+↓ ↓ ↓ ↓ ↓ ↓
+
+```jsx
+<Text style={[styles.class1, styles.class2]} />
+```
+
+---
+
+...or with `className` and `style`:
+
+```jsx
+<Text
+  className={`${styles.class1} ${styles.class2}`}
+  style={{ color: "blue" }}
+/>
+```
+
+↓ ↓ ↓ ↓ ↓ ↓
+
+```jsx
+<Text style={[styles.class1, styles.class2, { color: "blue" }]} />
+```
+
 ## Usage
 
 ### Step 1: Install
