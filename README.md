@@ -16,6 +16,8 @@ Example:
 <Text style={styles.myClass} />
 ```
 
+---
+
 ...or with `className` and `style`:
 
 ```jsx
@@ -30,7 +32,7 @@ Example:
 
 ## Multiple classes
 
-### Using `[styles.class1, styles.class2].join(" ")` syntax
+#### Using `[styles.class1, styles.class2].join(" ")` syntax
 
 Example:
 
@@ -43,6 +45,8 @@ Example:
 ```jsx
 <Text style={[styles.class1, styles.class2]} />
 ```
+
+---
 
 ...or with `className` and `style`:
 
