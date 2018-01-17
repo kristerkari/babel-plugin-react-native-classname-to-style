@@ -162,6 +162,33 @@ var Foo = function Foo() {
 "
 `;
 
+exports[`babel-plugin-react-native-classname-to-style Should support merging className with style with multiple elements: Should support merging className with style with multiple elements 1`] = `
+"
+const Foo = () => <div><div className={styles.shouldMergeWithStyles} style={{ color: \\"#f00\\" }}>Foo</div><div className={styles.shouldMergeWithStyles} style={{ color: \\"#0f0\\" }}>Bar</div></div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    null,
+    React.createElement(
+      \\"div\\",
+      { style: [styles.shouldMergeWithStyles, { color: \\"#f00\\" }] },
+      \\"Foo\\"
+    ),
+    React.createElement(
+      \\"div\\",
+      { style: [styles.shouldMergeWithStyles, { color: \\"#0f0\\" }] },
+      \\"Bar\\"
+    )
+  );
+};
+"
+`;
+
 exports[`babel-plugin-react-native-classname-to-style Should support merging className with style: Should support merging className with style 1`] = `
 "
 const Foo = () => <div className={styles.shouldMergeWithStyles} style={{ color: \\"#f00\\" }}>Foo</div>
@@ -211,6 +238,33 @@ var Foo = function Foo() {
     \\"div\\",
     { style: [styles.style1, styles.style2, styles.style3, { color: \\"red\\" }] },
     \\"Foo\\"
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should support multiple classnames by joining an array with multiple elements: Should support multiple classnames by joining an array with multiple elements 1`] = `
+"
+const Foo = () => <div><div className={[styles.style1, styles.style2].join(' ')}>Foo</div><div className={[styles.style3, styles.style4].join(' ')}>Bar</div></div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+'use strict';
+
+var Foo = function Foo() {
+  return React.createElement(
+    'div',
+    null,
+    React.createElement(
+      'div',
+      { style: [styles.style1, styles.style2] },
+      'Foo'
+    ),
+    React.createElement(
+      'div',
+      { style: [styles.style3, styles.style4] },
+      'Bar'
+    )
   );
 };
 "
@@ -301,6 +355,33 @@ var Foo = function Foo() {
     'div',
     { style: [styles.style1, {}] },
     'Foo'
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should transform single classname to styles object with multiple elements: Should transform single classname to styles object with multiple elements 1`] = `
+"
+const Foo = () => <div><div className={styles.foo}>Foo</div><div className={styles.bar}>Bar</div></div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    null,
+    React.createElement(
+      \\"div\\",
+      { style: styles.foo },
+      \\"Foo\\"
+    ),
+    React.createElement(
+      \\"div\\",
+      { style: styles.bar },
+      \\"Bar\\"
+    )
   );
 };
 "

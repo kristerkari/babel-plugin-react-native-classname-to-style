@@ -15,8 +15,18 @@ pluginTester({
       code: `const Foo = () => <div className={styles.foo}>Foo</div>`
     },
     {
+      title:
+        "Should transform single classname to styles object with multiple elements",
+      code: `const Foo = () => <div><div className={styles.foo}>Foo</div><div className={styles.bar}>Bar</div></div>`
+    },
+    {
       title: "Should support merging className with style",
       code: `const Foo = () => <div className={styles.shouldMergeWithStyles} style={{ color: "#f00" }}>Foo</div>`
+    },
+    {
+      title:
+        "Should support merging className with style with multiple elements",
+      code: `const Foo = () => <div><div className={styles.shouldMergeWithStyles} style={{ color: "#f00" }}>Foo</div><div className={styles.shouldMergeWithStyles} style={{ color: "#0f0" }}>Bar</div></div>`
     },
     {
       title: "Should support merging className with empty style object",
@@ -62,6 +72,11 @@ pluginTester({
     {
       title: "Should support multiple classnames by joining an array",
       code: `const Foo = () => <div className={[styles.style1, styles.style2].join(' ')}>Foo</div>`
+    },
+    {
+      title:
+        "Should support multiple classnames by joining an array with multiple elements",
+      code: `const Foo = () => <div><div className={[styles.style1, styles.style2].join(' ')}>Foo</div><div className={[styles.style3, styles.style4].join(' ')}>Bar</div></div>`
     },
     {
       title: "Should support multiple classnames by joining an array",
