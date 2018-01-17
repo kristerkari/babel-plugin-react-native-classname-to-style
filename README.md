@@ -2,6 +2,8 @@
 
 Transform JSX `className` property to `style` property in react-native.
 
+## Single class
+
 Example:
 
 ```jsx
@@ -24,6 +26,37 @@ Example:
 
 ```jsx
 <Text style={[styles.myClass, { color: "blue" }]} />
+```
+
+## Multiple classes
+
+### Using `[styles.class1, styles.class2].join(" ")` syntax
+
+Example:
+
+```jsx
+<Text className={[styles.class1, styles.class2].join(" ")} />
+```
+
+↓ ↓ ↓ ↓ ↓ ↓
+
+```jsx
+<Text style={[styles.class1, styles.class2]} />
+```
+
+...or with `className` and `style`:
+
+```jsx
+<Text
+  className={[styles.class1, styles.class2].join(" ")}
+  style={{ color: "blue" }}
+/>
+```
+
+↓ ↓ ↓ ↓ ↓ ↓
+
+```jsx
+<Text style={[styles.class1, styles.class2, { color: "blue" }]} />
 ```
 
 ## Usage
