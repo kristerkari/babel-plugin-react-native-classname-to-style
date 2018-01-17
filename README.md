@@ -120,7 +120,3 @@ npm install --save-dev babel-plugin-react-native-classname-to-style
   ]
 }
 ```
-
-## TODO
-
-* Support template literals for multiple classes for `className`.
