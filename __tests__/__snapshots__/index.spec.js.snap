@@ -576,6 +576,24 @@ var Foo = function Foo() {
 "
 `;
 
+exports[`babel-plugin-react-native-classname-to-style Should transform className that uses bracket syntax: Should transform className that uses bracket syntax 1`] = `
+"
+const Foo = (color) => <div className={styles[\\"button\\" + titleCase(color)]}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo(color) {
+  return React.createElement(
+    \\"div\\",
+    { style: styles[\\"button\\" + titleCase(color)] },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
 exports[`babel-plugin-react-native-classname-to-style Should transform single classname to styles object with multiple elements: Should transform single classname to styles object with multiple elements 1`] = `
 "
 const Foo = () => <div><div className={styles.foo}>Foo</div><div className={styles.bar}>Bar</div></div>

@@ -38,6 +38,10 @@ pluginTester({
       code: `const Foo = () => <div className={styles.shouldMergeWithStyles} style={{}} key={1}>Foo</div>`
     },
     {
+      title: "Should transform className that uses bracket syntax",
+      code: `const Foo = (color) => <div className={styles["button" + titleCase(color)]}>Foo</div>`
+    },
+    {
       title: "Should preserve className string",
       code: `const Foo = () => <div className="should-not-change">Foo</div>`
     },
