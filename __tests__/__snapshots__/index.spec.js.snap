@@ -180,6 +180,132 @@ var Foo = function Foo() {
 "
 `;
 
+exports[`babel-plugin-react-native-classname-to-style Should support multiple classnames by joining an array and merge empty styles object: Should support multiple classnames by joining an array and merge empty styles object 1`] = `
+"
+const Foo = () => <div className={[styles.style1, styles.style2, styles.style3].join(' ')} style={{}}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+'use strict';
+
+var Foo = function Foo() {
+  return React.createElement(
+    'div',
+    { style: [styles.style1, styles.style2, styles.style3, {}] },
+    'Foo'
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should support multiple classnames by joining an array and merge styles object: Should support multiple classnames by joining an array and merge styles object 1`] = `
+"
+const Foo = () => <div className={[styles.style1, styles.style2, styles.style3].join(' ')} style={{ color: \\"red\\" }}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: [styles.style1, styles.style2, styles.style3, { color: \\"red\\" }] },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should support multiple classnames by joining an array: Should support multiple classnames by joining an array 1`] = `
+"
+const Foo = () => <div className={[styles.style1, styles.style2].join(' ')}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+'use strict';
+
+var Foo = function Foo() {
+  return React.createElement(
+    'div',
+    { style: [styles.style1, styles.style2] },
+    'Foo'
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should support multiple classnames by joining an array: Should support multiple classnames by joining an array 2`] = `
+"
+const Foo = () => <div className={[styles.style1, styles.style2, styles.style3].join(' ')}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+'use strict';
+
+var Foo = function Foo() {
+  return React.createElement(
+    'div',
+    { style: [styles.style1, styles.style2, styles.style3] },
+    'Foo'
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should support single classname by joining an array and merge empty styles object: Should support single classname by joining an array and merge empty styles object 1`] = `
+"
+const Foo = () => <div className={[styles.style1].join(' ')} style={{}}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+'use strict';
+
+var Foo = function Foo() {
+  return React.createElement(
+    'div',
+    { style: [styles.style1, {}] },
+    'Foo'
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should support single classname by joining an array and merge styles object: Should support single classname by joining an array and merge styles object 1`] = `
+"
+const Foo = () => <div className={[styles.style1].join(' ')} style={{ color: \\"red\\" }}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: [styles.style1, { color: \\"red\\" }] },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should support single classname by joining an array: Should support single classname by joining an array 1`] = `
+"
+const Foo = () => <div className={[styles.style1].join(' ')}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+'use strict';
+
+var Foo = function Foo() {
+  return React.createElement(
+    'div',
+    { style: [styles.style1, {}] },
+    'Foo'
+  );
+};
+"
+`;
+
 exports[`babel-plugin-react-native-classname-to-style Should transform single classname to styles object: Should transform single classname to styles object 1`] = `
 "
 const Foo = () => <div className={styles.foo}>Foo</div>

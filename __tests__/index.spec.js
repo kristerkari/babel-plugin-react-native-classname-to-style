@@ -54,12 +54,40 @@ pluginTester({
     {
       title: "Should not touch className string and empty style definition",
       code: `const Foo = () => <div className="should-not-change" style={{}}>Foo</div>`
-    }
-    /*
+    },
+    {
+      title: "Should support single classname by joining an array",
+      code: `const Foo = () => <div className={[styles.style1].join(' ')}>Foo</div>`
+    },
+    {
+      title: "Should support multiple classnames by joining an array",
+      code: `const Foo = () => <div className={[styles.style1, styles.style2].join(' ')}>Foo</div>`
+    },
     {
       title: "Should support multiple classnames by joining an array",
       code: `const Foo = () => <div className={[styles.style1, styles.style2, styles.style3].join(' ')}>Foo</div>`
     },
+    {
+      title:
+        "Should support single classname by joining an array and merge styles object",
+      code: `const Foo = () => <div className={[styles.style1].join(' ')} style={{ color: "red" }}>Foo</div>`
+    },
+    {
+      title:
+        "Should support single classname by joining an array and merge empty styles object",
+      code: `const Foo = () => <div className={[styles.style1].join(' ')} style={{}}>Foo</div>`
+    },
+    {
+      title:
+        "Should support multiple classnames by joining an array and merge styles object",
+      code: `const Foo = () => <div className={[styles.style1, styles.style2, styles.style3].join(' ')} style={{ color: "red" }}>Foo</div>`
+    },
+    {
+      title:
+        "Should support multiple classnames by joining an array and merge empty styles object",
+      code: `const Foo = () => <div className={[styles.style1, styles.style2, styles.style3].join(' ')} style={{}}>Foo</div>`
+    }
+    /*
     {
       title: "Should support destructuring multiple styles",
       code: `const Foo = () => <div className={{...style1, ...style2}}>Foo</div>`,
