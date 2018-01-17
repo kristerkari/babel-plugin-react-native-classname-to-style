@@ -14,7 +14,7 @@ module.exports = function(babel) {
     );
   }
 
-  function isTemplateLiteral(value) {
+  function isTemplateLiteralWithExpressions(value) {
     return (
       value &&
       value.expression &&
@@ -97,7 +97,7 @@ module.exports = function(babel) {
           templateLiteral = null;
           css = null;
           style = null;
-        } else if (isTemplateLiteral(css.node.value)) {
+        } else if (isTemplateLiteralWithExpressions(css.node.value)) {
           templateLiteral = css.node.value;
           css.node.value = t.arrayExpression(
             css.node.value.expression.expressions
