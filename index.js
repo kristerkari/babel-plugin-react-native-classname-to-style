@@ -35,9 +35,19 @@ module.exports = function(babel) {
             return;
           }
 
+          if (
+            css.node.value.expression &&
+            css.node.value.expression.type === "StringLiteral"
+          ) {
+            return;
+          }
+
           var isArrayWithJoin =
             t.isJSXExpressionContainer(css.node.value) &&
             isJoinExpression(css.node.value);
+
+          var hasCSSAndStyle =
+            css && style && css.parentPath.node !== style.parentPath.node;
 
           if (isArrayWithJoin) {
             if (style && css) {
@@ -56,15 +66,10 @@ module.exports = function(babel) {
                 css.node.value.expression.callee.object.elements
               );
             }
-          } else if (style === null) {
+          } else if (hasCSSAndStyle || style == null) {
             style = css;
             style.node.name.name = "style";
-          } else if (
-            style &&
-            css &&
-            templateLiteral === null &&
-            css.node.value.expression.type !== "StringLiteral"
-          ) {
+          } else if (style && css && templateLiteral === null) {
             style.node.value = t.arrayExpression([
               css.node.value.expression,
               style.node.value.expression

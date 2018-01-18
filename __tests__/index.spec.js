@@ -16,12 +16,32 @@ pluginTester({
     },
     {
       title:
+        "Should transform single classname to styles object but not touch parent element's style",
+      code: `const Foo = () => <div style={{ width: "100%" }}><div className={styles.imWithFoo}>Foo</div></div>`
+    },
+    {
+      title:
+        "Should support merging single className with style but not touch parent element's style",
+      code: `const Foo = () => <div style={{ width: "100%" }}><div className={styles.imWithFoo} style={{ color: "black" }}>Foo</div></div>`
+    },
+    {
+      title:
+        "Should transform single classname to styles object with nested elements",
+      code: `const Foo = () => <div style={{ width: "100%" }}><div className={styles.style1}><div className={styles.style2} style={{ color: "red" }}><div className={styles.style3}>Bar</div></div></div></div>`
+    },
+    {
+      title:
         "Should transform single classname to styles object with multiple elements",
       code: `const Foo = () => <div><div className={styles.foo}>Foo</div><div className={styles.bar}>Bar</div></div>`
     },
     {
       title: "Should support merging className with style",
       code: `const Foo = () => <div className={styles.shouldMergeWithStyles} style={{ color: "#f00" }}>Foo</div>`
+    },
+    {
+      title:
+        "Should support merging className with style but not touch parent element's style",
+      code: `const Foo = () => <div style={{ width: "100%" }}><div className={styles.shouldMergeWithStyles} style={{ color: "#f00" }}>Foo</div></div>`
     },
     {
       title:
@@ -52,6 +72,10 @@ pluginTester({
     {
       title: "Should not touch style object",
       code: `const Foo = () => <div style={{ color: "#f00" }}>Foo</div>`
+    },
+    {
+      title: "Should not touch nested elements with style objects",
+      code: `const Foo = () => <div style={{ height: "100%" }}><div style={{ color: "#f00" }}>Foo</div></div>`
     },
     {
       title: "Should not touch multiple style objects",
