@@ -1,3 +1,7 @@
+# v1.2.1
+
+* Fixed: a bug where className was merged to parent element's styles.
+
 # v1.2.0
 
 * Support multiple classNames by using template literal syntax.
