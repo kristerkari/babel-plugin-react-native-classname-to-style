@@ -156,6 +156,12 @@ pluginTester({
     },
     {
       title:
+        "Should support ignore strings but merge expressions inside template literals",
+      code:
+        "const Foo = () => <div className={` ignored ${styles.transformed}`}>Foo</div>" // eslint-disable-line no-template-curly-in-string
+    },
+    {
+      title:
         "Should support single classname with template literals and merge styles object",
       code:
         "const Foo = () => <div className={`${styles.foo}`} style={{ color: 'black' }}>Foo</div>" // eslint-disable-line no-template-curly-in-string

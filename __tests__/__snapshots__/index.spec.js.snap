@@ -184,6 +184,24 @@ var Foo = function Foo() {
 "
 `;
 
+exports[`babel-plugin-react-native-classname-to-style Should support ignore strings but merge expressions inside template literals: Should support ignore strings but merge expressions inside template literals 1`] = `
+"
+const Foo = () => <div className={\` ignored \${styles.transformed}\`}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: [styles.transformed] },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
 exports[`babel-plugin-react-native-classname-to-style Should support merging className with empty style object and keep other props: Should support merging className with empty style object and keep other props 1`] = `
 "
 const Foo = () => <div className={styles.shouldMergeWithStyles} style={{}} key={1}>Foo</div>
