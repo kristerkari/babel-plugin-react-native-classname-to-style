@@ -108,6 +108,28 @@ var Foo = function Foo() {
 "
 `;
 
+exports[`babel-plugin-react-native-classname-to-style Should not touch nested elements with style objects: Should not touch nested elements with style objects 1`] = `
+"
+const Foo = () => <div style={{ height: \\"100%\\" }}><div style={{ color: \\"#f00\\" }}>Foo</div></div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: { height: \\"100%\\" } },
+    React.createElement(
+      \\"div\\",
+      { style: { color: \\"#f00\\" } },
+      \\"Foo\\"
+    )
+  );
+};
+"
+`;
+
 exports[`babel-plugin-react-native-classname-to-style Should not touch style object: Should not touch style object 1`] = `
 "
 const Foo = () => <div style={{ color: \\"#f00\\" }}>Foo</div>
@@ -198,6 +220,28 @@ var Foo = function Foo() {
 "
 `;
 
+exports[`babel-plugin-react-native-classname-to-style Should support merging className with style but not touch parent element's style: Should support merging className with style but not touch parent element's style 1`] = `
+"
+const Foo = () => <div style={{ width: \\"100%\\" }}><div className={styles.shouldMergeWithStyles} style={{ color: \\"#f00\\" }}>Foo</div></div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: { width: \\"100%\\" } },
+    React.createElement(
+      \\"div\\",
+      { style: [styles.shouldMergeWithStyles, { color: \\"#f00\\" }] },
+      \\"Foo\\"
+    )
+  );
+};
+"
+`;
+
 exports[`babel-plugin-react-native-classname-to-style Should support merging className with style with multiple elements: Should support merging className with style with multiple elements 1`] = `
 "
 const Foo = () => <div><div className={styles.shouldMergeWithStyles} style={{ color: \\"#f00\\" }}>Foo</div><div className={styles.shouldMergeWithStyles} style={{ color: \\"#0f0\\" }}>Bar</div></div>
@@ -238,6 +282,28 @@ var Foo = function Foo() {
     \\"div\\",
     { style: [styles.shouldMergeWithStyles, { color: \\"#f00\\" }] },
     \\"Foo\\"
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should support merging single className with style but not touch parent element's style: Should support merging single className with style but not touch parent element's style 1`] = `
+"
+const Foo = () => <div style={{ width: \\"100%\\" }}><div className={styles.imWithFoo} style={{ color: \\"black\\" }}>Foo</div></div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: { width: \\"100%\\" } },
+    React.createElement(
+      \\"div\\",
+      { style: [styles.imWithFoo, { color: \\"black\\" }] },
+      \\"Foo\\"
+    )
   );
 };
 "
@@ -515,7 +581,7 @@ const Foo = () => <div className={[styles.style1].join(' ')}>Foo</div>
 var Foo = function Foo() {
   return React.createElement(
     'div',
-    { style: [styles.style1] },
+    { style: [styles.style1, {}] },
     'Foo'
   );
 };
@@ -594,6 +660,28 @@ var Foo = function Foo(color) {
 "
 `;
 
+exports[`babel-plugin-react-native-classname-to-style Should transform single classname to styles object but not touch parent element's style: Should transform single classname to styles object but not touch parent element's style 1`] = `
+"
+const Foo = () => <div style={{ width: \\"100%\\" }}><div className={styles.imWithFoo}>Foo</div></div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: { width: \\"100%\\" } },
+    React.createElement(
+      \\"div\\",
+      { style: styles.imWithFoo },
+      \\"Foo\\"
+    )
+  );
+};
+"
+`;
+
 exports[`babel-plugin-react-native-classname-to-style Should transform single classname to styles object with multiple elements: Should transform single classname to styles object with multiple elements 1`] = `
 "
 const Foo = () => <div><div className={styles.foo}>Foo</div><div className={styles.bar}>Bar</div></div>
@@ -615,6 +703,36 @@ var Foo = function Foo() {
       \\"div\\",
       { style: styles.bar },
       \\"Bar\\"
+    )
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should transform single classname to styles object with nested elements: Should transform single classname to styles object with nested elements 1`] = `
+"
+const Foo = () => <div style={{ width: \\"100%\\" }}><div className={styles.style1}><div className={styles.style2} style={{ color: \\"red\\" }}><div className={styles.style3}>Bar</div></div></div></div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: { width: \\"100%\\" } },
+    React.createElement(
+      \\"div\\",
+      { style: styles.style1 },
+      React.createElement(
+        \\"div\\",
+        { style: [styles.style2, { color: \\"red\\" }] },
+        React.createElement(
+          \\"div\\",
+          { style: styles.style3 },
+          \\"Bar\\"
+        )
+      )
     )
   );
 };
