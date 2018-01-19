@@ -1,5 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`babel-plugin-react-native-classname-to-style Should merge single className and a style with a function call: Should merge single className and a style with a function call 1`] = `
+"
+const Foo = () => <div className={styles.foo} style={myFn()}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: [styles.foo, myFn()] },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
 exports[`babel-plugin-react-native-classname-to-style Should not touch className string and empty style definition: Should not touch className string and empty style definition 1`] = `
 "
 const Foo = () => <div className=\\"should-not-change\\" style={{}}>Foo</div>
@@ -142,6 +160,24 @@ var Foo = function Foo() {
   return React.createElement(
     \\"div\\",
     { style: { color: \\"#f00\\" } },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should not touch style with a function call: Should not touch style with a function call 1`] = `
+"
+const Foo = () => <div style={myFn()}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: myFn() },
     \\"Foo\\"
   );
 };

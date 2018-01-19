@@ -195,6 +195,15 @@ pluginTester({
         "Should support multiple classnames with template literals and another element with multiple classnames by joining an array and merge styles objects",
       code:
         "const Foo = () => <div><div className={`${styles.foo} ${styles.bar} ${styles.baz}`} style={{ color: 'blue' }}>Foo</div><div className={[styles.style1, styles.style2, styles.style3].join(' ')} style={{ color: 'red' }}>Bar</div></div>" // eslint-disable-line no-template-curly-in-string
+    },
+    {
+      title: "Should not touch style with a function call",
+      code: "const Foo = () => <div style={myFn()}>Foo</div>"
+    },
+    {
+      title: "Should merge single className and a style with a function call",
+      code:
+        "const Foo = () => <div className={styles.foo} style={myFn()}>Foo</div>"
     }
     /*
     {
