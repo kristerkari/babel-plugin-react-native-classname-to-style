@@ -1,6 +1,6 @@
 # babel-plugin-react-native-classname-to-style
 
-[![Build Status](https://travis-ci.org/kristerkari/babel-plugin-react-native-classname-to-style.svg?branch=master)](https://travis-ci.org/kristerkari/babel-plugin-react-native-classname-to-style)[![Build status](https://ci.appveyor.com/api/projects/status/t36rxodjhk72hl9i/branch/master?svg=true)](https://ci.appveyor.com/project/kristerkari/babel-plugin-react-native-classname-to-style/branch/master)
+[![Build Status](https://travis-ci.org/kristerkari/babel-plugin-react-native-classname-to-style.svg?branch=master)](https://travis-ci.org/kristerkari/babel-plugin-react-native-classname-to-style) [![Build status](https://ci.appveyor.com/api/projects/status/t36rxodjhk72hl9i/branch/master?svg=true)](https://ci.appveyor.com/project/kristerkari/babel-plugin-react-native-classname-to-style/branch/master)
 
 Transform JSX `className` property to `style` property in react-native.
 
@@ -94,6 +94,20 @@ Example:
 
 ```jsx
 <Text style={[styles.class1, styles.class2, { color: "blue" }]} />
+```
+
+## Using ternary operator
+
+Example:
+
+```jsx
+<Text className={isTrue ? styles.class1 : styles.class2} />
+```
+
+↓ ↓ ↓ ↓ ↓ ↓
+
+```jsx
+<Text style={isTrue ? styles.class1 : styles.class2} />
 ```
 
 ## Usage

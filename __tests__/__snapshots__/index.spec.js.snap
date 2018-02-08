@@ -714,6 +714,42 @@ var Foo = function Foo(color) {
 "
 `;
 
+exports[`babel-plugin-react-native-classname-to-style Should transform classname with ternary and merge with style property: Should transform classname with ternary and merge with style property 1`] = `
+"
+const Foo = () => <div className={isTrue ? styles.foo : styles.bar} style={{ color: \\"#f00\\" }}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: [isTrue ? styles.foo : styles.bar, { color: \\"#f00\\" }] },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should transform classname with ternary: Should transform classname with ternary 1`] = `
+"
+const Foo = () => <div className={isTrue ? styles.foo : styles.bar}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: isTrue ? styles.foo : styles.bar },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
 exports[`babel-plugin-react-native-classname-to-style Should transform single classname to styles object but not touch parent element's style: Should transform single classname to styles object but not touch parent element's style 1`] = `
 "
 const Foo = () => <div style={{ width: \\"100%\\" }}><div className={styles.imWithFoo}>Foo</div></div>

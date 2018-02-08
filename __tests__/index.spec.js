@@ -62,6 +62,15 @@ pluginTester({
       code: `const Foo = (color) => <div className={styles["button" + titleCase(color)]}>Foo</div>`
     },
     {
+      title: "Should transform classname with ternary",
+      code: `const Foo = () => <div className={isTrue ? styles.foo : styles.bar}>Foo</div>`
+    },
+    {
+      title:
+        "Should transform classname with ternary and merge with style property",
+      code: `const Foo = () => <div className={isTrue ? styles.foo : styles.bar} style={{ color: "#f00" }}>Foo</div>`
+    },
+    {
       title: "Should preserve className string",
       code: `const Foo = () => <div className="should-not-change">Foo</div>`
     },
