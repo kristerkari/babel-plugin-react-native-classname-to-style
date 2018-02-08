@@ -23,34 +23,35 @@ module.exports = function(babel) {
     );
   }
 
+  function isString(value) {
+    return value.type === "StringLiteral";
+  }
+
+  function isTemplateLiteralWithString(value) {
+    return value.expression && value.expression.type === "StringLiteral";
+  }
+
+  function isArrayWithJoin(value) {
+    return t.isJSXExpressionContainer(value) && isJoinExpression(value);
+  }
+
   return {
     visitor: {
       JSXOpeningElement: {
         exit(path, state) {
-          if (css === null) {
-            return;
-          }
-
-          if (css.node.value.type === "StringLiteral") {
-            return;
-          }
-
           if (
-            css.node.value.expression &&
-            css.node.value.expression.type === "StringLiteral"
+            css === null ||
+            isString(css.node.value) ||
+            isTemplateLiteralWithString(css.node.value)
           ) {
             return;
           }
 
-          var isArrayWithJoin =
-            t.isJSXExpressionContainer(css.node.value) &&
-            isJoinExpression(css.node.value);
-
-          var hasCSSAndStyle =
+          var isSameElement =
             css && style && css.parentPath.node !== style.parentPath.node;
 
-          if (isArrayWithJoin) {
-            if (style && css) {
+          if (isArrayWithJoin(css.node.value)) {
+            if (css && style) {
               var classes = [];
               classes = classes.concat(
                 css.node.value.expression.callee.object.elements
@@ -66,10 +67,10 @@ module.exports = function(babel) {
                 css.node.value.expression.callee.object.elements
               );
             }
-          } else if (hasCSSAndStyle || style == null) {
+          } else if (isSameElement || style == null) {
             style = css;
             style.node.name.name = "style";
-          } else if (style && css && templateLiteral === null) {
+          } else if (css && style && templateLiteral === null) {
             style.node.value = t.arrayExpression([
               css.node.value.expression,
               style.node.value.expression
