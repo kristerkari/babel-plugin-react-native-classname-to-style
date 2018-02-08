@@ -148,6 +148,24 @@ var Foo = function Foo() {
 "
 `;
 
+exports[`babel-plugin-react-native-classname-to-style Should not touch style object inside an array: Should not touch style object inside an array 1`] = `
+"
+const Foo = () => <div style={[{ color: \\"#f00\\" }]}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: [{ color: \\"#f00\\" }] },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
 exports[`babel-plugin-react-native-classname-to-style Should not touch style object: Should not touch style object 1`] = `
 "
 const Foo = () => <div style={{ color: \\"#f00\\" }}>Foo</div>

@@ -83,6 +83,10 @@ pluginTester({
       code: `const Foo = () => <div style={{ color: "#f00" }}>Foo</div>`
     },
     {
+      title: "Should not touch style object inside an array",
+      code: `const Foo = () => <div style={[{ color: "#f00" }]}>Foo</div>`
+    },
+    {
       title: "Should not touch nested elements with style objects",
       code: `const Foo = () => <div style={{ height: "100%" }}><div style={{ color: "#f00" }}>Foo</div></div>`
     },
