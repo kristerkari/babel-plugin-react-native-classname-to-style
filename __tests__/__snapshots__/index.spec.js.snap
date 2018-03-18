@@ -184,6 +184,24 @@ var Foo = function Foo() {
 "
 `;
 
+exports[`babel-plugin-react-native-classname-to-style Should not touch style tag ternaries: Should not touch style tag ternaries 1`] = `
+"
+const Foo = () => <div style={isTrue ? styles.foo : styles.bar}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: isTrue ? styles.foo : styles.bar },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
 exports[`babel-plugin-react-native-classname-to-style Should not touch style with a function call: Should not touch style with a function call 1`] = `
 "
 const Foo = () => <div style={myFn()}>Foo</div>
@@ -309,6 +327,24 @@ var Foo = function Foo() {
       { style: [styles.shouldMergeWithStyles, { color: \\"#f00\\" }] },
       \\"Foo\\"
     )
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should support merging className with style with function calls: Should support merging className with style with function calls 1`] = `
+"
+const Foo = () => <div className={b(styles.shouldMergeWithStyles)} style={f(styles.foo)}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: [b(styles.shouldMergeWithStyles), f(styles.foo)] },
+    \\"Foo\\"
   );
 };
 "
@@ -859,6 +895,78 @@ var Foo = function Foo() {
   return React.createElement(
     \\"div\\",
     { style: styles.foo },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should transform single classname with a function call: Should transform single classname with a function call 1`] = `
+"
+const Foo = () => <div className={f(styles.foo)}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: f(styles.foo) },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should transform ternaries with function calls: Should transform ternaries with function calls 1`] = `
+"
+const Foo = () => <div className={isTrue ? f(styles.foo) : f(styles.bar)}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: isTrue ? f(styles.foo) : f(styles.bar) },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should transform ternaries with numbers: Should transform ternaries with numbers 1`] = `
+"
+const Foo = () => <div className={isTrue ? 1 : 2}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: isTrue ? 1 : 2 },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should transform ternaries with strings: Should transform ternaries with strings 1`] = `
+"
+const Foo = () => <div className={isTrue ? \\"first\\" : \\"second\\"}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: isTrue ? \\"first\\" : \\"second\\" },
     \\"Foo\\"
   );
 };
