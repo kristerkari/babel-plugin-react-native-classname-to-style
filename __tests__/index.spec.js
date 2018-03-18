@@ -95,6 +95,14 @@ pluginTester({
       code: `const Foo = () => <div style={isTrue ? styles.foo : styles.bar}>Foo</div>`
     },
     {
+      title: "Should transform className with ref to style with ref",
+      code: `const Foo = () => <div className={styles}>Foo</div>`
+    },
+    {
+      title: "Should transform className with number to style with number",
+      code: `const Foo = () => <div className={1}>Foo</div>`
+    },
+    {
       title: "Should preserve className string",
       code: `const Foo = () => <div className="should-not-change">Foo</div>`
     },

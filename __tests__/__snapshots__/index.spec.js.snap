@@ -768,6 +768,42 @@ var Foo = function Foo(color) {
 "
 `;
 
+exports[`babel-plugin-react-native-classname-to-style Should transform className with number to style with number: Should transform className with number to style with number 1`] = `
+"
+const Foo = () => <div className={1}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: 1 },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should transform className with ref to style with ref: Should transform className with ref to style with ref 1`] = `
+"
+const Foo = () => <div className={styles}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: styles },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
 exports[`babel-plugin-react-native-classname-to-style Should transform classname with ternary and merge with style property: Should transform classname with ternary and merge with style property 1`] = `
 "
 const Foo = () => <div className={isTrue ? styles.foo : styles.bar} style={{ color: \\"#f00\\" }}>Foo</div>
