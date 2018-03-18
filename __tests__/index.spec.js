@@ -62,6 +62,14 @@ pluginTester({
       code: `const Foo = (color) => <div className={styles["button" + titleCase(color)]}>Foo</div>`
     },
     {
+      title: "Should transform single classname with a function call",
+      code: `const Foo = () => <div className={f(styles.foo)}>Foo</div>`
+    },
+    {
+      title: "Should support merging className with style with function calls",
+      code: `const Foo = () => <div className={b(styles.shouldMergeWithStyles)} style={f(styles.foo)}>Foo</div>`
+    },
+    {
       title: "Should transform classname with ternary",
       code: `const Foo = () => <div className={isTrue ? styles.foo : styles.bar}>Foo</div>`
     },
@@ -69,6 +77,30 @@ pluginTester({
       title:
         "Should transform classname with ternary and merge with style property",
       code: `const Foo = () => <div className={isTrue ? styles.foo : styles.bar} style={{ color: "#f00" }}>Foo</div>`
+    },
+    {
+      title: "Should transform ternaries with function calls",
+      code: `const Foo = () => <div className={isTrue ? f(styles.foo) : f(styles.bar)}>Foo</div>`
+    },
+    {
+      title: "Should transform ternaries with strings",
+      code: `const Foo = () => <div className={isTrue ? "first" : "second"}>Foo</div>`
+    },
+    {
+      title: "Should transform ternaries with numbers",
+      code: `const Foo = () => <div className={isTrue ? 1 : 2}>Foo</div>`
+    },
+    {
+      title: "Should not touch style tag ternaries",
+      code: `const Foo = () => <div style={isTrue ? styles.foo : styles.bar}>Foo</div>`
+    },
+    {
+      title: "Should transform className with ref to style with ref",
+      code: `const Foo = () => <div className={styles}>Foo</div>`
+    },
+    {
+      title: "Should transform className with number to style with number",
+      code: `const Foo = () => <div className={1}>Foo</div>`
     },
     {
       title: "Should preserve className string",
