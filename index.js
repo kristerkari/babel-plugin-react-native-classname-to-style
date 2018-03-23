@@ -16,15 +16,16 @@ module.exports = function(babel) {
 
   function isTemplateLiteralWithExpressions(value) {
     return (
-      value &&
-      value.expression &&
-      value.expression.type === "TemplateLiteral" &&
+      t.isJSXExpressionContainer(value) &&
+      t.isTemplateLiteral(value.expression) &&
       value.expression.expressions.length > 0
     );
   }
 
   function isTemplateLiteralWithString(value) {
-    return value.expression && value.expression.type === "StringLiteral";
+    return (
+      t.isJSXExpressionContainer(value) && t.isStringLiteral(value.expression)
+    );
   }
 
   function isArrayWithJoin(value) {
