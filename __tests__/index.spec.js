@@ -59,6 +59,11 @@ pluginTester({
     },
     {
       title: "Should transform className that uses bracket syntax",
+      code: `const Foo = (color) => <div className={styles["foo-bar"]}>Foo</div>`
+    },
+    {
+      title:
+        "Should transform className that uses bracket syntax and a function call",
       code: `const Foo = (color) => <div className={styles["button" + titleCase(color)]}>Foo</div>`
     },
     {

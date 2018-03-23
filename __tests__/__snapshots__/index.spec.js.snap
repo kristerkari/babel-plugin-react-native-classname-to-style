@@ -750,7 +750,7 @@ var Foo = function Foo() {
 "
 `;
 
-exports[`babel-plugin-react-native-classname-to-style Should transform className that uses bracket syntax: Should transform className that uses bracket syntax 1`] = `
+exports[`babel-plugin-react-native-classname-to-style Should transform className that uses bracket syntax and a function call: Should transform className that uses bracket syntax and a function call 1`] = `
 "
 const Foo = (color) => <div className={styles[\\"button\\" + titleCase(color)]}>Foo</div>
 
@@ -762,6 +762,24 @@ var Foo = function Foo(color) {
   return React.createElement(
     \\"div\\",
     { style: styles[\\"button\\" + titleCase(color)] },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should transform className that uses bracket syntax: Should transform className that uses bracket syntax 1`] = `
+"
+const Foo = (color) => <div className={styles[\\"foo-bar\\"]}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo(color) {
+  return React.createElement(
+    \\"div\\",
+    { style: styles[\\"foo-bar\\"] },
     \\"Foo\\"
   );
 };
