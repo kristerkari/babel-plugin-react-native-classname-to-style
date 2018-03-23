@@ -822,6 +822,42 @@ var Foo = function Foo() {
 "
 `;
 
+exports[`babel-plugin-react-native-classname-to-style Should transform classname with ternary where the test is a style prop: Should transform classname with ternary where the test is a style prop 1`] = `
+"
+const Foo = () => <div className={!styles.foo ? styles.foo : styles.bar}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: !styles.foo ? styles.foo : styles.bar },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should transform classname with ternary where the test is a style prop: Should transform classname with ternary where the test is a style prop 2`] = `
+"
+const Foo = () => <div className={styles.foo !== undefined ? styles.foo : styles.bar}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: styles.foo !== undefined ? styles.foo : styles.bar },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
 exports[`babel-plugin-react-native-classname-to-style Should transform classname with ternary: Should transform classname with ternary 1`] = `
 "
 const Foo = () => <div className={isTrue ? styles.foo : styles.bar}>Foo</div>
