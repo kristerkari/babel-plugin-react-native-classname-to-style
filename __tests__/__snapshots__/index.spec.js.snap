@@ -840,6 +840,42 @@ var Foo = function Foo() {
 "
 `;
 
+exports[`babel-plugin-react-native-classname-to-style Should transform classname with ternary where the test is a style prop and merge with style property: Should transform classname with ternary where the test is a style prop and merge with style property 1`] = `
+"
+const Foo = () => <div className={!styles.foo ? styles.foo : styles.bar} style={{ color: \\"#f00\\" }}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: [!styles.foo ? styles.foo : styles.bar, { color: \\"#f00\\" }] },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should transform classname with ternary where the test is a style prop and merge with style property: Should transform classname with ternary where the test is a style prop and merge with style property 2`] = `
+"
+const Foo = () => <div className={styles.foo !== undefined ? styles.foo : styles.bar} style={{ color: \\"#f00\\" }}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: [styles.foo !== undefined ? styles.foo : styles.bar, { color: \\"#f00\\" }] },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
 exports[`babel-plugin-react-native-classname-to-style Should transform classname with ternary where the test is a style prop: Should transform classname with ternary where the test is a style prop 1`] = `
 "
 const Foo = () => <div className={!styles.foo ? styles.foo : styles.bar}>Foo</div>
@@ -1003,6 +1039,24 @@ var Foo = function Foo() {
   return React.createElement(
     \\"div\\",
     { style: f(styles.foo) },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should transform ternaries with empty function calls: Should transform ternaries with empty function calls 1`] = `
+"
+const Foo = () => <div className={isTrue ? a() : b()}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: isTrue ? a() : b() },
     \\"Foo\\"
   );
 };

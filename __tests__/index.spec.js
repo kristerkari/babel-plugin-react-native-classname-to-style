@@ -94,8 +94,22 @@ pluginTester({
       code: `const Foo = () => <div className={isTrue ? styles.foo : styles.bar} style={{ color: "#f00" }}>Foo</div>`
     },
     {
+      title:
+        "Should transform classname with ternary where the test is a style prop and merge with style property",
+      code: `const Foo = () => <div className={!styles.foo ? styles.foo : styles.bar} style={{ color: "#f00" }}>Foo</div>`
+    },
+    {
+      title:
+        "Should transform classname with ternary where the test is a style prop and merge with style property",
+      code: `const Foo = () => <div className={styles.foo !== undefined ? styles.foo : styles.bar} style={{ color: "#f00" }}>Foo</div>`
+    },
+    {
       title: "Should transform ternaries with function calls",
       code: `const Foo = () => <div className={isTrue ? f(styles.foo) : f(styles.bar)}>Foo</div>`
+    },
+    {
+      title: "Should transform ternaries with empty function calls",
+      code: `const Foo = () => <div className={isTrue ? a() : b()}>Foo</div>`
     },
     {
       title: "Should transform ternaries with strings",
