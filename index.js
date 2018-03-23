@@ -23,10 +23,6 @@ module.exports = function(babel) {
     );
   }
 
-  function isString(value) {
-    return value.type === "StringLiteral";
-  }
-
   function isTemplateLiteralWithString(value) {
     return value.expression && value.expression.type === "StringLiteral";
   }
@@ -41,7 +37,7 @@ module.exports = function(babel) {
         exit(path, state) {
           if (
             css === null ||
-            isString(css.node.value) ||
+            t.isStringLiteral(css.node.value) ||
             isTemplateLiteralWithString(css.node.value)
           ) {
             return;
