@@ -516,6 +516,24 @@ var Foo = function Foo() {
 "
 `;
 
+exports[`babel-plugin-react-native-classname-to-style Should support multiple classnames with brackets with template literals: Should support multiple classnames with brackets with template literals 1`] = `
+"
+const Foo = () => <div className={\`\${styles['foo']} \${styles['bar']}\`}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+'use strict';
+
+var Foo = function Foo() {
+  return React.createElement(
+    'div',
+    { style: [styles['foo'], styles['bar']] },
+    'Foo'
+  );
+};
+"
+`;
+
 exports[`babel-plugin-react-native-classname-to-style Should support multiple classnames with template literals and another element with multiple classnames by joining an array and merge styles objects: Should support multiple classnames with template literals and another element with multiple classnames by joining an array and merge styles objects 1`] = `
 "
 const Foo = () => <div><div className={\`\${styles.foo} \${styles.bar} \${styles.baz}\`} style={{ color: 'blue' }}>Foo</div><div className={[styles.style1, styles.style2, styles.style3].join(' ')} style={{ color: 'red' }}>Bar</div></div>
@@ -637,6 +655,60 @@ var Foo = function Foo() {
     \\"div\\",
     { style: [styles.foo, styles.bar, styles.baz] },
     \\"Foo\\"
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should support single bracket style by joining an array and merge styles object: Should support single bracket style by joining an array and merge styles object 1`] = `
+"
+const Foo = () => <div className={[styles[\\"style1\\"]].join(' ')} style={{ color: \\"red\\" }}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: [styles[\\"style1\\"], { color: \\"red\\" }] },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should support single bracket style with template literals and merge styles object: Should support single bracket style with template literals and merge styles object 1`] = `
+"
+const Foo = () => <div className={\`\${styles['foo']}\`} style={{ color: 'black' }}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+'use strict';
+
+var Foo = function Foo() {
+  return React.createElement(
+    'div',
+    { style: [styles['foo'], { color: 'black' }] },
+    'Foo'
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should support single bracket style with template literals: Should support single bracket style with template literals 1`] = `
+"
+const Foo = () => <div className={\`\${styles['foo']}\`}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+'use strict';
+
+var Foo = function Foo() {
+  return React.createElement(
+    'div',
+    { style: [styles['foo']] },
+    'Foo'
   );
 };
 "
@@ -822,6 +894,24 @@ var Foo = function Foo() {
 "
 `;
 
+exports[`babel-plugin-react-native-classname-to-style Should transform classname with ternary and bracket syntax: Should transform classname with ternary and bracket syntax 1`] = `
+"
+const Foo = () => <div className={isTrue ? styles[\\"foo\\"] : styles[\\"bar\\"]}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: isTrue ? styles[\\"foo\\"] : styles[\\"bar\\"] },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
 exports[`babel-plugin-react-native-classname-to-style Should transform classname with ternary and merge with style property: Should transform classname with ternary and merge with style property 1`] = `
 "
 const Foo = () => <div className={isTrue ? styles.foo : styles.bar} style={{ color: \\"#f00\\" }}>Foo</div>
@@ -834,6 +924,24 @@ var Foo = function Foo() {
   return React.createElement(
     \\"div\\",
     { style: [isTrue ? styles.foo : styles.bar, { color: \\"#f00\\" }] },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should transform classname with ternary and merge with style property: Should transform classname with ternary and merge with style property 2`] = `
+"
+const Foo = () => <div className={isTrue ? styles[\\"foo\\"] : styles[\\"bar\\"]} style={{ color: \\"#f00\\" }}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: [isTrue ? styles[\\"foo\\"] : styles[\\"bar\\"], { color: \\"#f00\\" }] },
     \\"Foo\\"
   );
 };

@@ -94,6 +94,10 @@ pluginTester({
       code: `const Foo = () => <div className={undefined !== styles.foo ? styles.foo : styles.bar}>Foo</div>`
     },
     {
+      title: "Should transform classname with ternary and bracket syntax",
+      code: `const Foo = () => <div className={isTrue ? styles["foo"] : styles["bar"]}>Foo</div>`
+    },
+    {
       title:
         "Should transform classname with ternary and merge with style property",
       code: `const Foo = () => <div className={isTrue ? styles.foo : styles.bar} style={{ color: "#f00" }}>Foo</div>`
@@ -107,6 +111,11 @@ pluginTester({
       title:
         "Should transform classname with ternary where the test is a style prop and merge with style property",
       code: `const Foo = () => <div className={styles.foo !== undefined ? styles.foo : styles.bar} style={{ color: "#f00" }}>Foo</div>`
+    },
+    {
+      title:
+        "Should transform classname with ternary and merge with style property",
+      code: `const Foo = () => <div className={isTrue ? styles["foo"] : styles["bar"]} style={{ color: "#f00" }}>Foo</div>`
     },
     {
       title:
@@ -211,6 +220,11 @@ pluginTester({
     },
     {
       title:
+        "Should support single bracket style by joining an array and merge styles object",
+      code: `const Foo = () => <div className={[styles["style1"]].join(' ')} style={{ color: "red" }}>Foo</div>`
+    },
+    {
+      title:
         "Should support single classname by joining an array and merge empty styles object",
       code: `const Foo = () => <div className={[styles.style1].join(' ')} style={{}}>Foo</div>`
     },
@@ -229,9 +243,19 @@ pluginTester({
       code: "const Foo = () => <div className={`${styles.foo}`}>Foo</div>" // eslint-disable-line no-template-curly-in-string
     },
     {
+      title: "Should support single bracket style with template literals",
+      code: "const Foo = () => <div className={`${styles['foo']}`}>Foo</div>" // eslint-disable-line no-template-curly-in-string
+    },
+    {
       title: "Should support multiple classnames with template literals",
       code:
         "const Foo = () => <div className={`${styles.foo} ${styles.bar}`}>Foo</div>" // eslint-disable-line no-template-curly-in-string
+    },
+    {
+      title:
+        "Should support multiple classnames with brackets with template literals",
+      code:
+        "const Foo = () => <div className={`${styles['foo']} ${styles['bar']}`}>Foo</div>" // eslint-disable-line no-template-curly-in-string
     },
     {
       title: "Should support multiple classnames with template literals",
@@ -249,6 +273,12 @@ pluginTester({
         "Should support single classname with template literals and merge styles object",
       code:
         "const Foo = () => <div className={`${styles.foo}`} style={{ color: 'black' }}>Foo</div>" // eslint-disable-line no-template-curly-in-string
+    },
+    {
+      title:
+        "Should support single bracket style with template literals and merge styles object",
+      code:
+        "const Foo = () => <div className={`${styles['foo']}`} style={{ color: 'black' }}>Foo</div>" // eslint-disable-line no-template-curly-in-string
     },
     {
       title:
