@@ -49,12 +49,12 @@ module.exports = function(babel) {
 
           if (isArrayWithJoin(css.node.value)) {
             if (css && style) {
-              var classes = [];
-              classes = classes.concat(
-                css.node.value.expression.callee.object.elements
+              style.node.value = t.arrayExpression(
+                [].concat(
+                  css.node.value.expression.callee.object.elements,
+                  style.node.value.expression
+                )
               );
-              classes.push(style.node.value.expression);
-              style.node.value = t.arrayExpression(classes);
               css.replaceWith(style);
               style.remove();
             } else {
@@ -91,10 +91,12 @@ module.exports = function(babel) {
         }
 
         if (style && style.node.value.expression && templateLiteral) {
-          var classes = [];
-          classes = classes.concat(templateLiteral.expression.expressions);
-          classes.push(style.node.value.expression);
-          style.node.value = t.arrayExpression(classes);
+          style.node.value = t.arrayExpression(
+            [].concat(
+              templateLiteral.expression.expressions,
+              style.node.value.expression
+            )
+          );
           css.replaceWith(style);
           style.remove();
           templateLiteral = null;
