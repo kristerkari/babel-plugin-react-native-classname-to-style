@@ -840,6 +840,24 @@ var Foo = function Foo(color) {
 "
 `;
 
+exports[`babel-plugin-react-native-classname-to-style Should transform className that uses bracket syntax and merge with style: Should transform className that uses bracket syntax and merge with style 1`] = `
+"
+const Foo = (color) => <div className={styles[\\"foo-bar\\"]} style={{ color: \\"#f00\\" }}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var Foo = function Foo(color) {
+  return React.createElement(
+    \\"div\\",
+    { style: [styles[\\"foo-bar\\"], { color: \\"#f00\\" }] },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
 exports[`babel-plugin-react-native-classname-to-style Should transform className that uses bracket syntax: Should transform className that uses bracket syntax 1`] = `
 "
 const Foo = (color) => <div className={styles[\\"foo-bar\\"]}>Foo</div>
