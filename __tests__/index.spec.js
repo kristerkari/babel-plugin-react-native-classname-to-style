@@ -76,6 +76,11 @@ pluginTester({
       code: `const Foo = () => <div className={f(styles.foo)}>Foo</div>`
     },
     {
+      title:
+        "Should transform single classname with a function call and merge with style",
+      code: `const Foo = () => <div className={f(styles.foo)} style={{ color: "#f00" }}>Foo</div>`
+    },
+    {
       title: "Should support merging className with style with function calls",
       code: `const Foo = () => <div className={b(styles.shouldMergeWithStyles)} style={f(styles.foo)}>Foo</div>`
     },
@@ -130,6 +135,11 @@ pluginTester({
     {
       title: "Should transform ternaries with function calls",
       code: `const Foo = () => <div className={isTrue ? f(styles.foo) : f(styles.bar)}>Foo</div>`
+    },
+    {
+      title:
+        "Should transform ternaries with function calls and merge with style",
+      code: `const Foo = () => <div className={isTrue ? f(styles.foo) : f(styles.bar)} style={{ color: "#f00" }}>Foo</div>`
     },
     {
       title: "Should transform ternaries with empty function calls",
