@@ -15,6 +15,13 @@ pluginTester({
       code: `const Foo = () => <div className={styles.foo}>Foo</div>`
     },
     {
+      title: "Should preserve reference to style import",
+      code: `
+        import styles from "./styles.css";
+        const Foo = () => <div className={styles.foo}>Foo</div>
+      `
+    },
+    {
       title:
         "Should transform single classname to styles object but not touch parent element's style",
       code: `const Foo = () => <div style={{ width: "100%" }}><div className={styles.imWithFoo}>Foo</div></div>`

@@ -256,6 +256,31 @@ var Foo = function Foo() {
 "
 `;
 
+exports[`babel-plugin-react-native-classname-to-style Should preserve reference to style import: Should preserve reference to style import 1`] = `
+"
+import styles from \\"./styles.css\\";
+const Foo = () => <div className={styles.foo}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var _styles = require(\\"./styles.css\\");
+
+var _styles2 = _interopRequireDefault(_styles);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: _styles2.default.foo },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
 exports[`babel-plugin-react-native-classname-to-style Should support ignore strings but merge expressions inside template literals: Should support ignore strings but merge expressions inside template literals 1`] = `
 "
 const Foo = () => <div className={\` ignored \${styles.transformed}\`}>Foo</div>
