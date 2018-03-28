@@ -22,6 +22,13 @@ pluginTester({
       `
     },
     {
+      title: "Should preserve reference to style require",
+      code: `
+        const styles = require("./styles.css");
+        const Foo = () => <div className={styles.foo}>Foo</div>
+      `
+    },
+    {
       title:
         "Should transform single classname to styles object but not touch parent element's style",
       code: `const Foo = () => <div style={{ width: "100%" }}><div className={styles.imWithFoo}>Foo</div></div>`
@@ -69,6 +76,20 @@ pluginTester({
       code: `const Foo = (color) => <div className={styles["foo-bar"]}>Foo</div>`
     },
     {
+      title: "Should preserve import and className that uses bracket syntax",
+      code: `
+        import styles from "./styles.css";
+        const Foo = (color) => <div className={styles["foo-bar"]}>Foo</div>
+      `
+    },
+    {
+      title: "Should preserve require and className that uses bracket syntax",
+      code: `
+        const styles = require("./styles.css");
+        const Foo = (color) => <div className={styles["foo-bar"]}>Foo</div>
+      `
+    },
+    {
       title:
         "Should transform className that uses bracket syntax and a function call",
       code: `const Foo = (color) => <div className={styles["button" + titleCase(color)]}>Foo</div>`
@@ -94,6 +115,20 @@ pluginTester({
     {
       title: "Should transform classname with ternary",
       code: `const Foo = () => <div className={isTrue ? styles.foo : styles.bar}>Foo</div>`
+    },
+    {
+      title: "Should preserve import and transform classname with ternary",
+      code: `
+        import styles from "./styles.css";
+        const Foo = () => <div className={isTrue ? styles.foo : styles.bar}>Foo</div>
+      `
+    },
+    {
+      title: "Should preserve require and transform classname with ternary",
+      code: `
+        const styles = require("./styles.css");
+        const Foo = () => <div className={isTrue ? styles.foo : styles.bar}>Foo</div>
+      `
     },
     {
       title:

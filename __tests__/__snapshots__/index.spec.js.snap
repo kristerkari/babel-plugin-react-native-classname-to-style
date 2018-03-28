@@ -256,6 +256,56 @@ var Foo = function Foo() {
 "
 `;
 
+exports[`babel-plugin-react-native-classname-to-style Should preserve import and className that uses bracket syntax: Should preserve import and className that uses bracket syntax 1`] = `
+"
+import styles from \\"./styles.css\\";
+const Foo = (color) => <div className={styles[\\"foo-bar\\"]}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var _styles = require(\\"./styles.css\\");
+
+var _styles2 = _interopRequireDefault(_styles);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Foo = function Foo(color) {
+  return React.createElement(
+    \\"div\\",
+    { style: _styles2.default[\\"foo-bar\\"] },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should preserve import and transform classname with ternary: Should preserve import and transform classname with ternary 1`] = `
+"
+import styles from \\"./styles.css\\";
+const Foo = () => <div className={isTrue ? styles.foo : styles.bar}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var _styles = require(\\"./styles.css\\");
+
+var _styles2 = _interopRequireDefault(_styles);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: isTrue ? _styles2.default.foo : _styles2.default.bar },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
 exports[`babel-plugin-react-native-classname-to-style Should preserve reference to style import: Should preserve reference to style import 1`] = `
 "
 import styles from \\"./styles.css\\";
@@ -275,6 +325,66 @@ var Foo = function Foo() {
   return React.createElement(
     \\"div\\",
     { style: _styles2.default.foo },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should preserve reference to style require: Should preserve reference to style require 1`] = `
+"
+const styles = require(\\"./styles.css\\");
+const Foo = () => <div className={styles.foo}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var styles = require(\\"./styles.css\\");
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: styles.foo },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should preserve require and className that uses bracket syntax: Should preserve require and className that uses bracket syntax 1`] = `
+"
+const styles = require(\\"./styles.css\\");
+const Foo = (color) => <div className={styles[\\"foo-bar\\"]}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var styles = require(\\"./styles.css\\");
+var Foo = function Foo(color) {
+  return React.createElement(
+    \\"div\\",
+    { style: styles[\\"foo-bar\\"] },
+    \\"Foo\\"
+  );
+};
+"
+`;
+
+exports[`babel-plugin-react-native-classname-to-style Should preserve require and transform classname with ternary: Should preserve require and transform classname with ternary 1`] = `
+"
+const styles = require(\\"./styles.css\\");
+const Foo = () => <div className={isTrue ? styles.foo : styles.bar}>Foo</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var styles = require(\\"./styles.css\\");
+var Foo = function Foo() {
+  return React.createElement(
+    \\"div\\",
+    { style: isTrue ? styles.foo : styles.bar },
     \\"Foo\\"
   );
 };
