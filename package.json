@@ -70,5 +70,20 @@
     "semi": true,
     "singleQuote": false,
     "trailingComma": "none"
+  },
+  "jest": {
+    "coverageDirectory": "./.coverage/",
+    "coverageReporters": [
+      "lcov",
+      "text"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 75,
+        "functions": 75,
+        "lines": 75,
+        "statements": 75
+      }
+    }
   }
 }
