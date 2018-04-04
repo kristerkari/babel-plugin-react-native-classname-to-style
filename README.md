@@ -1,10 +1,10 @@
 # babel-plugin-react-native-classname-to-style
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/kristerkari/babel-plugin-react-native-classname-to-style.svg)](https://greenkeeper.io/)
-
 [![NPM version](http://img.shields.io/npm/v/babel-plugin-react-native-classname-to-style.svg)](https://www.npmjs.org/package/babel-plugin-react-native-classname-to-style)
 [![Build Status](https://travis-ci.org/kristerkari/babel-plugin-react-native-classname-to-style.svg?branch=master)](https://travis-ci.org/kristerkari/babel-plugin-react-native-classname-to-style) [![Build status](https://ci.appveyor.com/api/projects/status/t36rxodjhk72hl9i/branch/master?svg=true)](https://ci.appveyor.com/project/kristerkari/babel-plugin-react-native-classname-to-style/branch/master)
+[![Coverage Status](https://coveralls.io/repos/github/kristerkari/babel-plugin-react-native-classname-to-style/badge.svg?branch=master)](https://coveralls.io/github/kristerkari/babel-plugin-react-native-classname-to-style?branch=master)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github)
+[![Greenkeeper badge](https://badges.greenkeeper.io/kristerkari/babel-plugin-react-native-classname-to-style.svg)](https://greenkeeper.io/)
 
 Transform JSX `className` property to `style` property in react-native.
 
