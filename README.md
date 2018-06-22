@@ -8,6 +8,35 @@
 
 Transform JSX `className` property to `style` property in react-native.
 
+## Usage
+
+### Step 1: Install
+
+```sh
+yarn add --dev babel-plugin-react-native-classname-to-style
+```
+
+or
+
+```sh
+npm install --save-dev babel-plugin-react-native-classname-to-style
+```
+
+### Step 2: Configure `.babelrc`
+
+```
+{
+  "presets": [
+    "react-native"
+  ],
+  "plugins": [
+    "react-native-classname-to-style"
+  ]
+}
+```
+
+## Syntax
+
 ## Single class
 
 Example:
@@ -112,31 +141,4 @@ Example:
 
 ```jsx
 <Text style={isTrue ? styles.class1 : styles.class2} />
-```
-
-## Usage
-
-### Step 1: Install
-
-```sh
-yarn add --dev babel-plugin-react-native-classname-to-style
-```
-
-or
-
-```sh
-npm install --save-dev babel-plugin-react-native-classname-to-style
-```
-
-### Step 2: Configure `.babelrc`
-
-```
-{
-  "presets": [
-    "react-native"
-  ],
-  "plugins": [
-    "react-native-classname-to-style"
-  ]
-}
 ```
