@@ -33,6 +33,7 @@ module.exports = function(babel) {
   }
 
   return {
+    name: "react-native-classname-to-style",
     visitor: {
       JSXOpeningElement: {
         exit(path, state) {
