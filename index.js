@@ -65,7 +65,7 @@ module.exports = function(babel) {
                 css.node.value.expression.callee.object.elements
               );
             }
-          } else if (isSameElement || style == null) {
+          } else if (isSameElement || style === null) {
             style = css;
             style.node.name.name = "style";
           } else if (css && style && templateLiteral === null) {
@@ -77,6 +77,7 @@ module.exports = function(babel) {
           }
           css = null;
           style = null;
+          templateLiteral = null;
         }
       },
       JSXAttribute: function JSXAttribute(path, state) {

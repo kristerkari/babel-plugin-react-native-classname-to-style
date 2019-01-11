@@ -317,6 +317,12 @@ pluginTester({
         "const Foo = () => <div className={`${styles['foo']} ${styles['bar']}`}>Foo</div>" // eslint-disable-line no-template-curly-in-string
     },
     {
+      title:
+        "Should transform multiple classnames with template literals to styles object with nested elements",
+      code:
+        "const Foo = () => <div style={{ width: '100%' }}><div className={`${styles.foo1} ${styles.bar1}`}><div className={`${styles.foo2} ${styles.bar2}`} style={{ color: 'red' }}><div className={`${styles.foo3} ${styles.bar3}`}>Bar</div></div></div></div>" // eslint-disable-line no-template-curly-in-string
+    },
+    {
       title: "Should support multiple classnames with template literals",
       code:
         "const Foo = () => <div className={`${styles.foo} ${styles.bar} ${styles.baz}`}>Foo</div>" // eslint-disable-line no-template-curly-in-string

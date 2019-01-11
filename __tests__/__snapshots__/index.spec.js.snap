@@ -1227,6 +1227,36 @@ var Foo = function Foo() {
 "
 `;
 
+exports[`babel-plugin-react-native-classname-to-style Should transform multiple classnames with template literals to styles object with nested elements: Should transform multiple classnames with template literals to styles object with nested elements 1`] = `
+"
+const Foo = () => <div style={{ width: '100%' }}><div className={\`\${styles.foo1} \${styles.bar1}\`}><div className={\`\${styles.foo2} \${styles.bar2}\`} style={{ color: 'red' }}><div className={\`\${styles.foo3} \${styles.bar3}\`}>Bar</div></div></div></div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+'use strict';
+
+var Foo = function Foo() {
+  return React.createElement(
+    'div',
+    { style: { width: '100%' } },
+    React.createElement(
+      'div',
+      { style: [styles.foo1, styles.bar1] },
+      React.createElement(
+        'div',
+        { style: [styles.foo2, styles.bar2, { color: 'red' }] },
+        React.createElement(
+          'div',
+          { style: [styles.foo3, styles.bar3] },
+          'Bar'
+        )
+      )
+    )
+  );
+};
+"
+`;
+
 exports[`babel-plugin-react-native-classname-to-style Should transform single classname to styles object but not touch parent element's style: Should transform single classname to styles object but not touch parent element's style 1`] = `
 "
 const Foo = () => <div style={{ width: \\"100%\\" }}><div className={styles.imWithFoo}>Foo</div></div>
