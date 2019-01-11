@@ -66,6 +66,7 @@
         2,
         "always"
       ],
+      "eqeqeq": [2, "always"],
       "quotes": 0,
       "no-unused-vars": 2,
       "@babel/development/no-deprecated-clone": 2,
