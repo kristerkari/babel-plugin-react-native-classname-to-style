@@ -905,10 +905,10 @@ babel-plugin-jest-hoist@^24.1.0:
   resolved "https://registry.yarnpkg.com/babel-plugin-jest-hoist/-/babel-plugin-jest-hoist-24.1.0.tgz#dfecc491fb15e2668abbd690a697a8fd1411a7f8"
   integrity sha512-gljYrZz8w1b6fJzKcsfKsipSru2DU2DmQ39aB6nV3xQ0DDv3zpIzKGortA5gknrhNnPN8DweaEgrnZdmbGmhnw==
 
-babel-plugin-tester@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/babel-plugin-tester/-/babel-plugin-tester-6.0.0.tgz#91483381e65f48ea717320a30a9182a441e3fe18"
-  integrity sha512-vzR8l3w9OlXSv6XmdTHu1qpT4i4/y7sK/g0mH1FusPIK7fPd8PYgkzSfuHpLp0JgQzY/LTsmxkSIXfTyfjZ9Ug==
+babel-plugin-tester@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-tester/-/babel-plugin-tester-6.1.0.tgz#92e5c266313ac461fbb6b00802822d6765cfdb82"
+  integrity sha512-+2GG3PYh32fMk4rgVR2jcUlfMUZEIQffyqa3itawMujWBJ9awL91NnMQ+jorj9xzuKq18YmTrjDIBYCzn1estQ==
   dependencies:
     common-tags "^1.4.0"
     invariant "^2.2.2"
