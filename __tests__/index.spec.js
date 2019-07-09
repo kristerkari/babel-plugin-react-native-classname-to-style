@@ -383,6 +383,20 @@ pluginTester({
       title: "Should merge single className and a style with a function call",
       code:
         "const Foo = () => <div className={styles.foo} style={myFn()}>Foo</div>"
+    },
+    {
+      title: "Should support multiple classnames type in array styles objects",
+      code: `
+          import styles from "./styles.css";
+          const Foo = () => {
+            const
+              rd = Math.random(10),
+              style1 = styles.bar,
+              style2 = rd % 2 === 1 ? styles.bay : styles.baz;
+
+            return <div className={[styles.foo, style1, style2].join(' ')}>Bar</div>
+          }
+      `
     }
     /*
     {

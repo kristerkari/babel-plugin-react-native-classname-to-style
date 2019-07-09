@@ -598,6 +598,37 @@ var Foo = function Foo() {
 "
 `;
 
+exports[`babel-plugin-react-native-classname-to-style Should support multiple classnames type in array styles objects: Should support multiple classnames type in array styles objects 1`] = `
+"
+import styles from \\"./styles.css\\";
+const Foo = () => {
+  const
+    rd = Math.random(10),
+    style1 = styles.bar,
+    style2 = rd % 2 === 1 ? styles.bay : styles.baz;
+
+  return <div className={[styles.foo, style1, style2].join(' ')}>Bar</div>
+}
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\\"use strict\\";
+
+var _styles = _interopRequireDefault(require(\\"./styles.css\\"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Foo = function Foo() {
+  var rd = Math.random(10),
+      style1 = _styles.default.bar,
+      style2 = rd % 2 === 1 ? _styles.default.bay : _styles.default.baz;
+  return React.createElement(\\"div\\", {
+    style: [_styles.default.foo, style1, style2]
+  }, \\"Bar\\");
+};
+"
+`;
+
 exports[`babel-plugin-react-native-classname-to-style Should support multiple classnames with brackets with template literals: Should support multiple classnames with brackets with template literals 1`] = `
 "
 const Foo = () => <div className={\`\${styles['foo']} \${styles['bar']}\`}>Foo</div>
