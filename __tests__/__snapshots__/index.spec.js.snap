@@ -9,7 +9,7 @@ const Foo = () => <div className={styles.foo} style={myFn()}>Foo</div>
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles.foo, myFn()]
   }, \\"Foo\\");
 };
@@ -25,7 +25,7 @@ const Foo = () => <div className=\\"should-not-change\\" style={{}}>Foo</div>
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     className: \\"should-not-change\\",
     style: {}
   }, \\"Foo\\");
@@ -42,7 +42,7 @@ const Foo = () => <div className={\`should-not-change\`} style={{}}>Foo</div>
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     className: \\"should-not-change\\",
     style: {}
   }, \\"Foo\\");
@@ -59,7 +59,7 @@ const Foo = () => <div className={\`should-not-change\`}>Foo</div>
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     className: \\"should-not-change\\"
   }, \\"Foo\\");
 };
@@ -75,7 +75,7 @@ const Foo = () => <div style={{}}>Foo</div>
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: {}
   }, \\"Foo\\");
 };
@@ -91,7 +91,7 @@ const Foo = () => <div style={[styles.shouldNotBeTransformed, { color: \\"#f00\\
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles.shouldNotBeTransformed, {
       color: \\"#f00\\"
     }]
@@ -109,7 +109,7 @@ const Foo = () => <div style={[{ backgroundColor: \\"#000\\" }, { color: \\"#f00
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: [{
       backgroundColor: \\"#000\\"
     }, {
@@ -129,11 +129,11 @@ const Foo = () => <div style={{ height: \\"100%\\" }}><div style={{ color: \\"#f
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: {
       height: \\"100%\\"
     }
-  }, React.createElement(\\"div\\", {
+  }, /*#__PURE__*/React.createElement(\\"div\\", {
     style: {
       color: \\"#f00\\"
     }
@@ -151,7 +151,7 @@ const Foo = () => <div style={[{ color: \\"#f00\\" }]}>Foo</div>
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: [{
       color: \\"#f00\\"
     }]
@@ -169,7 +169,7 @@ const Foo = () => <div style={{ color: \\"#f00\\" }}>Foo</div>
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: {
       color: \\"#f00\\"
     }
@@ -187,7 +187,7 @@ const Foo = () => <div style={isTrue ? styles.foo : styles.bar}>Foo</div>
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: isTrue ? styles.foo : styles.bar
   }, \\"Foo\\");
 };
@@ -203,7 +203,7 @@ const Foo = () => <div style={myFn()}>Foo</div>
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: myFn()
   }, \\"Foo\\");
 };
@@ -219,7 +219,7 @@ const Foo = () => <div className=\\"should-not-change\\" style={{ color: \\"#f00
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     className: \\"should-not-change\\",
     style: {
       color: \\"#f00\\"
@@ -238,7 +238,7 @@ const Foo = () => <div className=\\"should-not-change\\">Foo</div>
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     className: \\"should-not-change\\"
   }, \\"Foo\\");
 };
@@ -256,11 +256,11 @@ const Foo = (color) => <div className={styles[\\"foo-bar\\"]}>Foo</div>
 
 var _styles = _interopRequireDefault(require(\\"./styles.css\\"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \\"default\\": obj }; }
 
 var Foo = function Foo(color) {
-  return React.createElement(\\"div\\", {
-    style: _styles.default[\\"foo-bar\\"]
+  return /*#__PURE__*/React.createElement(\\"div\\", {
+    style: _styles[\\"default\\"][\\"foo-bar\\"]
   }, \\"Foo\\");
 };
 "
@@ -277,11 +277,11 @@ const Foo = () => <div className={isTrue ? styles.foo : styles.bar}>Foo</div>
 
 var _styles = _interopRequireDefault(require(\\"./styles.css\\"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \\"default\\": obj }; }
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
-    style: isTrue ? _styles.default.foo : _styles.default.bar
+  return /*#__PURE__*/React.createElement(\\"div\\", {
+    style: isTrue ? _styles[\\"default\\"].foo : _styles[\\"default\\"].bar
   }, \\"Foo\\");
 };
 "
@@ -298,11 +298,11 @@ const Foo = () => <div className={styles.foo}>Foo</div>
 
 var _styles = _interopRequireDefault(require(\\"./styles.css\\"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \\"default\\": obj }; }
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
-    style: _styles.default.foo
+  return /*#__PURE__*/React.createElement(\\"div\\", {
+    style: _styles[\\"default\\"].foo
   }, \\"Foo\\");
 };
 "
@@ -320,7 +320,7 @@ const Foo = () => <div className={styles.foo}>Foo</div>
 var styles = require(\\"./styles.css\\");
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: styles.foo
   }, \\"Foo\\");
 };
@@ -339,7 +339,7 @@ const Foo = (color) => <div className={styles[\\"foo-bar\\"]}>Foo</div>
 var styles = require(\\"./styles.css\\");
 
 var Foo = function Foo(color) {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: styles[\\"foo-bar\\"]
   }, \\"Foo\\");
 };
@@ -358,7 +358,7 @@ const Foo = () => <div className={isTrue ? styles.foo : styles.bar}>Foo</div>
 var styles = require(\\"./styles.css\\");
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: isTrue ? styles.foo : styles.bar
   }, \\"Foo\\");
 };
@@ -374,7 +374,7 @@ const Foo = () => <div className={\` ignored \${styles.transformed}\`}>Foo</div>
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles.transformed]
   }, \\"Foo\\");
 };
@@ -390,7 +390,7 @@ const Foo = () => <div className={styles.shouldMergeWithStyles} style={{}} key={
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles.shouldMergeWithStyles, {}],
     key: 1
   }, \\"Foo\\");
@@ -407,7 +407,7 @@ const Foo = () => <div className={styles.shouldMergeWithStyles} style={{}}>Foo</
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles.shouldMergeWithStyles, {}]
   }, \\"Foo\\");
 };
@@ -423,11 +423,11 @@ const Foo = () => <div style={{ width: \\"100%\\" }}><div className={styles.shou
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: {
       width: \\"100%\\"
     }
-  }, React.createElement(\\"div\\", {
+  }, /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles.shouldMergeWithStyles, {
       color: \\"#f00\\"
     }]
@@ -445,7 +445,7 @@ const Foo = () => <div className={b(styles.shouldMergeWithStyles)} style={f(styl
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: [b(styles.shouldMergeWithStyles), f(styles.foo)]
   }, \\"Foo\\");
 };
@@ -461,11 +461,11 @@ const Foo = () => <div><div className={styles.shouldMergeWithStyles} style={{ co
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", null, React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", null, /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles.shouldMergeWithStyles, {
       color: \\"#f00\\"
     }]
-  }, \\"Foo\\"), React.createElement(\\"div\\", {
+  }, \\"Foo\\"), /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles.shouldMergeWithStyles, {
       color: \\"#0f0\\"
     }]
@@ -483,7 +483,7 @@ const Foo = () => <div className={styles.shouldMergeWithStyles} style={{ color: 
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles.shouldMergeWithStyles, {
       color: \\"#f00\\"
     }]
@@ -501,11 +501,11 @@ const Foo = () => <div style={{ width: \\"100%\\" }}><div className={styles.imWi
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: {
       width: \\"100%\\"
     }
-  }, React.createElement(\\"div\\", {
+  }, /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles.imWithFoo, {
       color: \\"black\\"
     }]
@@ -523,7 +523,7 @@ const Foo = () => <div className={[styles.style1, styles.style2, styles.style3].
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles.style1, styles.style2, styles.style3, {}]
   }, \\"Foo\\");
 };
@@ -539,7 +539,7 @@ const Foo = () => <div className={[styles.style1, styles.style2, styles.style3].
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles.style1, styles.style2, styles.style3, {
       color: \\"red\\"
     }]
@@ -557,9 +557,9 @@ const Foo = () => <div><div className={[styles.style1, styles.style2].join(' ')}
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", null, React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", null, /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles.style1, styles.style2]
-  }, \\"Foo\\"), React.createElement(\\"div\\", {
+  }, \\"Foo\\"), /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles.style3, styles.style4]
   }, \\"Bar\\"));
 };
@@ -575,7 +575,7 @@ const Foo = () => <div className={[styles.style1, styles.style2].join(' ')}>Foo<
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles.style1, styles.style2]
   }, \\"Foo\\");
 };
@@ -591,7 +591,7 @@ const Foo = () => <div className={[styles.style1, styles.style2, styles.style3].
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles.style1, styles.style2, styles.style3]
   }, \\"Foo\\");
 };
@@ -616,14 +616,14 @@ const Foo = () => {
 
 var _styles = _interopRequireDefault(require(\\"./styles.css\\"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \\"default\\": obj }; }
 
 var Foo = function Foo() {
   var rd = Math.random(10),
-      style1 = _styles.default.bar,
-      style2 = rd % 2 === 1 ? _styles.default.bay : _styles.default.baz;
-  return React.createElement(\\"div\\", {
-    style: [_styles.default.foo, style1, style2]
+      style1 = _styles[\\"default\\"].bar,
+      style2 = rd % 2 === 1 ? _styles[\\"default\\"].bay : _styles[\\"default\\"].baz;
+  return /*#__PURE__*/React.createElement(\\"div\\", {
+    style: [_styles[\\"default\\"].foo, style1, style2]
   }, \\"Bar\\");
 };
 "
@@ -638,7 +638,7 @@ const Foo = () => <div className={\`\${styles['foo']} \${styles['bar']}\`}>Foo</
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles['foo'], styles['bar']]
   }, \\"Foo\\");
 };
@@ -654,11 +654,11 @@ const Foo = () => <div><div className={\`\${styles.foo} \${styles.bar} \${styles
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", null, React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", null, /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles.foo, styles.bar, styles.baz, {
       color: 'blue'
     }]
-  }, \\"Foo\\"), React.createElement(\\"div\\", {
+  }, \\"Foo\\"), /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles.style1, styles.style2, styles.style3, {
       color: 'red'
     }]
@@ -676,9 +676,9 @@ const Foo = () => <div><div className={\`\${styles.foo} \${styles.bar} \${styles
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", null, React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", null, /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles.foo, styles.bar, styles.baz]
-  }, \\"Foo\\"), React.createElement(\\"div\\", {
+  }, \\"Foo\\"), /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles.style1, styles.style2]
   }, \\"Bar\\"));
 };
@@ -694,7 +694,7 @@ const Foo = () => <div className={\`\${styles.foo} \${styles.bar} \${styles.baz}
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles.foo, styles.bar, styles.baz, {}]
   }, \\"Foo\\");
 };
@@ -710,7 +710,7 @@ const Foo = () => <div className={\`\${styles.foo} \${styles.bar} \${styles.baz}
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles.foo, styles.bar, styles.baz, {
       color: 'black'
     }]
@@ -728,7 +728,7 @@ const Foo = () => <div className={\`\${styles.foo} \${styles.bar}\`}>Foo</div>
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles.foo, styles.bar]
   }, \\"Foo\\");
 };
@@ -744,7 +744,7 @@ const Foo = () => <div className={\`\${styles.foo} \${styles.bar} \${styles.baz}
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles.foo, styles.bar, styles.baz]
   }, \\"Foo\\");
 };
@@ -760,7 +760,7 @@ const Foo = () => <div className={[styles[\\"style1\\"]].join(' ')} style={{ col
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles[\\"style1\\"], {
       color: \\"red\\"
     }]
@@ -778,7 +778,7 @@ const Foo = () => <div className={\`\${styles['foo']}\`} style={{ color: 'black'
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles['foo'], {
       color: 'black'
     }]
@@ -796,7 +796,7 @@ const Foo = () => <div className={\`\${styles['foo']}\`}>Foo</div>
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles['foo']]
   }, \\"Foo\\");
 };
@@ -812,7 +812,7 @@ const Foo = () => <div className={[styles.style1].join(' ')} style={{}}>Foo</div
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles.style1, {}]
   }, \\"Foo\\");
 };
@@ -828,7 +828,7 @@ const Foo = () => <div className={[styles.style1].join(' ')} style={{ color: \\"
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles.style1, {
       color: \\"red\\"
     }]
@@ -846,7 +846,7 @@ const Foo = () => <div className={[styles.style1].join(' ')}>Foo</div>
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles.style1, {}]
   }, \\"Foo\\");
 };
@@ -862,7 +862,7 @@ const Foo = () => <div className={\`\${styles.foo}\`} style={{}}>Foo</div>
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles.foo, {}]
   }, \\"Foo\\");
 };
@@ -878,7 +878,7 @@ const Foo = () => <div className={\`\${styles.foo}\`} style={{ color: 'black' }}
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles.foo, {
       color: 'black'
     }]
@@ -896,7 +896,7 @@ const Foo = () => <div className={\`\${styles.foo}\`}>Foo</div>
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles.foo]
   }, \\"Foo\\");
 };
@@ -912,7 +912,7 @@ const Foo = (color) => <div className={styles[\\"button\\" + titleCase(color)]}>
 \\"use strict\\";
 
 var Foo = function Foo(color) {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: styles[\\"button\\" + titleCase(color)]
   }, \\"Foo\\");
 };
@@ -928,7 +928,7 @@ const Foo = (color) => <div className={styles[\\"foo-bar\\"]} style={{ color: \\
 \\"use strict\\";
 
 var Foo = function Foo(color) {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles[\\"foo-bar\\"], {
       color: \\"#f00\\"
     }]
@@ -946,7 +946,7 @@ const Foo = (color) => <div className={styles[\\"foo-bar\\"]}>Foo</div>
 \\"use strict\\";
 
 var Foo = function Foo(color) {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: styles[\\"foo-bar\\"]
   }, \\"Foo\\");
 };
@@ -962,7 +962,7 @@ const Foo = () => <div className={1}>Foo</div>
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: 1
   }, \\"Foo\\");
 };
@@ -978,7 +978,7 @@ const Foo = () => <div className={styles}>Foo</div>
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: styles
   }, \\"Foo\\");
 };
@@ -994,7 +994,7 @@ const Foo = () => <div className={isTrue ? styles[\\"foo\\"] : styles[\\"bar\\"]
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: isTrue ? styles[\\"foo\\"] : styles[\\"bar\\"]
   }, \\"Foo\\");
 };
@@ -1010,7 +1010,7 @@ const Foo = () => <div className={isTrue ? styles.foo : styles.bar} style={{ col
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: [isTrue ? styles.foo : styles.bar, {
       color: \\"#f00\\"
     }]
@@ -1028,7 +1028,7 @@ const Foo = () => <div className={isTrue ? styles[\\"foo\\"] : styles[\\"bar\\"]
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: [isTrue ? styles[\\"foo\\"] : styles[\\"bar\\"], {
       color: \\"#f00\\"
     }]
@@ -1046,7 +1046,7 @@ const Foo = () => <div className={!styles.foo ? styles.foo : styles.bar} style={
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: [!styles.foo ? styles.foo : styles.bar, {
       color: \\"#f00\\"
     }]
@@ -1064,7 +1064,7 @@ const Foo = () => <div className={styles.foo !== undefined ? styles.foo : styles
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles.foo !== undefined ? styles.foo : styles.bar, {
       color: \\"#f00\\"
     }]
@@ -1082,7 +1082,7 @@ const Foo = () => <div className={undefined !== styles.foo ? styles.foo : styles
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: [undefined !== styles.foo ? styles.foo : styles.bar, {
       color: \\"#f00\\"
     }]
@@ -1100,7 +1100,7 @@ const Foo = () => <div className={!styles.foo ? styles.foo : styles.bar}>Foo</di
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: !styles.foo ? styles.foo : styles.bar
   }, \\"Foo\\");
 };
@@ -1116,7 +1116,7 @@ const Foo = () => <div className={styles.foo !== undefined ? styles.foo : styles
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: styles.foo !== undefined ? styles.foo : styles.bar
   }, \\"Foo\\");
 };
@@ -1132,7 +1132,7 @@ const Foo = () => <div className={undefined !== styles.foo ? styles.foo : styles
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: undefined !== styles.foo ? styles.foo : styles.bar
   }, \\"Foo\\");
 };
@@ -1148,7 +1148,7 @@ const Foo = () => <div className={isTrue ? styles.foo : styles.bar}>Foo</div>
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: isTrue ? styles.foo : styles.bar
   }, \\"Foo\\");
 };
@@ -1164,17 +1164,17 @@ const Foo = () => <div style={{ width: '100%' }}><div className={\`\${styles.foo
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: {
       width: '100%'
     }
-  }, React.createElement(\\"div\\", {
+  }, /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles.foo1, styles.bar1]
-  }, React.createElement(\\"div\\", {
+  }, /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles.foo2, styles.bar2, {
       color: 'red'
     }]
-  }, React.createElement(\\"div\\", {
+  }, /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles.foo3, styles.bar3]
   }, \\"Bar\\"))));
 };
@@ -1190,11 +1190,11 @@ const Foo = () => <div style={{ width: \\"100%\\" }}><div className={styles.imWi
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: {
       width: \\"100%\\"
     }
-  }, React.createElement(\\"div\\", {
+  }, /*#__PURE__*/React.createElement(\\"div\\", {
     style: styles.imWithFoo
   }, \\"Foo\\"));
 };
@@ -1210,9 +1210,9 @@ const Foo = () => <div><div className={styles.foo}>Foo</div><div className={styl
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", null, React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", null, /*#__PURE__*/React.createElement(\\"div\\", {
     style: styles.foo
-  }, \\"Foo\\"), React.createElement(\\"div\\", {
+  }, \\"Foo\\"), /*#__PURE__*/React.createElement(\\"div\\", {
     style: styles.bar
   }, \\"Bar\\"));
 };
@@ -1228,17 +1228,17 @@ const Foo = () => <div style={{ width: \\"100%\\" }}><div className={styles.styl
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: {
       width: \\"100%\\"
     }
-  }, React.createElement(\\"div\\", {
+  }, /*#__PURE__*/React.createElement(\\"div\\", {
     style: styles.style1
-  }, React.createElement(\\"div\\", {
+  }, /*#__PURE__*/React.createElement(\\"div\\", {
     style: [styles.style2, {
       color: \\"red\\"
     }]
-  }, React.createElement(\\"div\\", {
+  }, /*#__PURE__*/React.createElement(\\"div\\", {
     style: styles.style3
   }, \\"Bar\\"))));
 };
@@ -1254,7 +1254,7 @@ const Foo = () => <div className={styles.foo}>Foo</div>
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: styles.foo
   }, \\"Foo\\");
 };
@@ -1270,7 +1270,7 @@ const Foo = () => <div className={f(styles.foo)} style={{ color: \\"#f00\\" }}>F
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: [f(styles.foo), {
       color: \\"#f00\\"
     }]
@@ -1288,7 +1288,7 @@ const Foo = () => <div className={f(styles.foo)}>Foo</div>
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: f(styles.foo)
   }, \\"Foo\\");
 };
@@ -1304,7 +1304,7 @@ const Foo = () => <div className={isTrue ? a() : b()}>Foo</div>
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: isTrue ? a() : b()
   }, \\"Foo\\");
 };
@@ -1320,7 +1320,7 @@ const Foo = () => <div className={isTrue ? f(styles.foo) : f(styles.bar)} style=
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: [isTrue ? f(styles.foo) : f(styles.bar), {
       color: \\"#f00\\"
     }]
@@ -1338,7 +1338,7 @@ const Foo = () => <div className={isTrue ? f(styles.foo) : f(styles.bar)}>Foo</d
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: isTrue ? f(styles.foo) : f(styles.bar)
   }, \\"Foo\\");
 };
@@ -1354,7 +1354,7 @@ const Foo = () => <div className={isTrue ? 1 : 2}>Foo</div>
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: isTrue ? 1 : 2
   }, \\"Foo\\");
 };
@@ -1370,7 +1370,7 @@ const Foo = () => <div className={isTrue ? \\"first\\" : \\"second\\"}>Foo</div>
 \\"use strict\\";
 
 var Foo = function Foo() {
-  return React.createElement(\\"div\\", {
+  return /*#__PURE__*/React.createElement(\\"div\\", {
     style: isTrue ? \\"first\\" : \\"second\\"
   }, \\"Foo\\");
 };
